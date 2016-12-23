@@ -41,3 +41,5 @@ function isMatch(cards) {
 		alert("Sorry, try again.");
 	}
 }
+
+createBoard();
