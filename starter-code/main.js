@@ -1,19 +1,45 @@
-console.log("JS file is connected to HTML! Woo!");
-var cardOne="queen", cardTwo="queen", cardThree="king", cardFour="king";
+// // console.log("JS file is connected to HTML! Woo!");
+// // var cardOne="queen", cardTwo="queen", cardThree="king", cardFour="king";
 
-/**if(cardOne === cardTwo){
-	alert("You found a match!");
-}
-else{
-	alert("Sorry, try again.");
-}*/
+// var newGameBoard = document.getElementById('game-board');
 
-var newGameBoard = document.getElementById('game-board');
+var cards = ['queen', 'queen', 'king', 'king'];
+var cardsInPlay = [];
 
-var createCards = function(){
-	for(var i = 0; i < 4; i++){
-		var newCard = document.createElement('div');
-		newCard.className = 'card';
-		newGameBoard.appendChild(newCard);
+var board = document.getElementById('game-board');
+
+function createBoard() {
+	for (var i=0; i< 2; i++) {
+		var cardElement = document.createElement('div');
+		cardElement.className = 'card';
+		cardElement.setAttribute('data-card', cards[i]);
+		cardElement.addEventListener('click', isTwoCards);
+		board.appendChild(cardElement);
 	}
 }
+
+function isTwoCards() {
+	cardsInPlay.push(this.getAttribute('data-card'));
+	console.log(this.getAttribute('data-card'));
+	if (this.getAttribute('data-card') === 'king'){
+		this.innerHTML = "<img src = 'king.png'>";
+	} else {
+		this.innerHTML = "<img src = 'queen.png'>";
+	}
+	if (cardsInPlay.length === 2) {
+		isMatch(cardsInPlay);
+
+		cardsInPlay = [];
+	}
+}
+
+function isMatch(cards) {
+	if (cards[0] === cards[1]) {
+		alert("You found a match!");
+	}
+	else{
+		alert("Sorry, try again.");
+	}
+}
+
+createBoard();

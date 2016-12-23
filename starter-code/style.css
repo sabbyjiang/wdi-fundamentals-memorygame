@@ -31,6 +31,11 @@ h1 {
 h2{
 	color: #ffd700;
 }
+img {
+	height:200px;
+	width:150px;
+	border-radius:10px;
+}
 div {}
 .board{
 	height:50%%;
