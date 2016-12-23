@@ -9,7 +9,7 @@ var cardsInPlay = [];
 var board = document.getElementById('game-board');
 
 function createBoard() {
-	for (var i=0; i< 2; i++) {
+	for (var i=0; i< cards.length; i++) {
 		var cardElement = document.createElement('div');
 		cardElement.className = 'card';
 		cardElement.setAttribute('data-card', cards[i]);
@@ -41,5 +41,3 @@ function isMatch(cards) {
 		alert("Sorry, try again.");
 	}
 }
-
-createBoard();
